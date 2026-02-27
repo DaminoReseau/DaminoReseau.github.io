@@ -1,0 +1,149 @@
+---
+const links = [
+  { icon: '✉', label: 'Email',    text: 'votre@email.com',              href: 'mailto:votre@email.com' },
+  { icon: 'in', label: 'LinkedIn', text: 'linkedin.com/in/votre-profil', href: 'https://linkedin.com/in/votre-profil' },
+  { icon: '⌥',  label: 'GitHub',  text: 'github.com/DaminoReseau',      href: 'https://github.com/DaminoReseau' },
+];
+---
+
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="num">03</span>
+    <h2>Contact</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="grid">
+    <div class="left reveal">
+      <p>
+        Disponible pour des missions freelance, des postes en CDI/CDD
+        ou des collaborations techniques. N'hésitez pas à me contacter.
+      </p>
+      <div class="links">
+        {links.map(l => (
+          <a href={l.href} class="clink" target={l.href.startsWith('http') ? '_blank' : undefined}>
+            <span class="clink-icon">{l.icon}</span>
+            <span class="clink-text">{l.text}</span>
+            <span class="clink-label">{l.label}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <form class="form reveal" id="contact-form">
+      <div class="fg">
+        <label class="flabel">Nom</label>
+        <input type="text" class="finput" placeholder="Jean Dupont" required />
+      </div>
+      <div class="fg">
+        <label class="flabel">Email</label>
+        <input type="email" class="finput" placeholder="jean@exemple.com" required />
+      </div>
+      <div class="fg">
+        <label class="flabel">Message</label>
+        <textarea class="ftextarea" placeholder="Votre message..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" id="submit-btn">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn  = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    btn.textContent = 'Message envoyé ✓';
+    (btn as HTMLElement).style.background = '#00b37a';
+    setTimeout(() => {
+      btn.textContent = 'Envoyer le message';
+      (btn as HTMLElement).style.background = '';
+      form.reset();
+    }, 3000);
+  });
+</script>
+
+<style>
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .num { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; }
+  h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; }
+  .line { flex: 1; height: 1px; background: var(--border); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .left p {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .links { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  .clink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .clink:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+  .clink-icon { font-size: 0.95rem; width: 1.2rem; text-align: center; }
+  .clink-label { margin-left: auto; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .form { display: flex; flex-direction: column; gap: 1rem; }
+  .fg { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .flabel {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .finput, .ftextarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    width: 100%;
+  }
+  .finput:focus, .ftextarea:focus { border-color: var(--accent); }
+  .ftextarea { height: 130px; }
+
+  @media (max-width: 800px) {
+    section { padding: 5rem 1.5rem; }
+    .grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

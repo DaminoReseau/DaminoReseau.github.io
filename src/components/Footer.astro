@@ -1,0 +1,34 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <p>© {year} <span>DaminoReseau</span> — Admin Systèmes &amp; Réseaux</p>
+  <p>Fait avec <span>❤</span> et beaucoup de <span>ping</span></p>
+</footer>
+
+<style>
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  p {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  span { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+</style>
