@@ -8,255 +8,220 @@
 <meta name="apple-mobile-web-app-title" content="Cordage Pro">
 <meta name="theme-color" content="#0d0d0d">
 <title>Cordage Pro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0d0d0d; --s:#181818; --s2:#202020; --b:#282828;
-  --ac:#c8f135; --adim:rgba(200,241,53,0.1);
-  --tx:#f0ede6; --mu:#777; --fa:#333;
-  --gn:#4ade80; --rd:#f87171;
-  --st:env(safe-area-inset-top); --sb:env(safe-area-inset-bottom);
-}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+:root{
+  --bg:#0d0d0d;--s:#1a1a1a;--s2:#222;--b:#2a2a2a;
+  --ac:#c8f135;--tx:#f0ede6;--mu:#777;--fa:#3a3a3a;
+  --gn:#4ade80;--rd:#f87171;
+  --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,sans-serif;font-size:15px}
 
 /* SETUP */
-#setup{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:32px 20px;text-align:center;gap:0}
-.s-logo{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:4px;color:var(--ac);line-height:1}
-.s-sub{font-size:11px;letter-spacing:2.5px;color:var(--mu);text-transform:uppercase;margin:6px 0 32px}
-.s-card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:24px 20px;width:100%;max-width:420px;margin-bottom:12px;text-align:left}
-.s-card h2{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--ac);margin-bottom:16px;text-align:center}
-.step{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
-.snum{background:var(--ac);color:#0d0d0d;font-family:'Bebas Neue',sans-serif;font-size:15px;min-width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.stxt{font-size:12px;color:var(--mu);line-height:1.55}
-.stxt strong{color:var(--tx);display:block;font-size:13px;margin-bottom:1px}
-.stxt a{color:var(--ac);text-decoration:none}
-.stxt code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;font-size:11px;color:var(--tx)}
-.s-inp{width:100%;background:var(--bg);border:1px solid var(--b);border-radius:11px;padding:12px 13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;margin-top:12px;transition:border-color .2s;-webkit-appearance:none}
-.s-inp:focus{border-color:var(--ac)}
-.s-inp::placeholder{color:var(--fa)}
-.s-btn{width:100%;padding:14px;border-radius:11px;border:none;background:var(--ac);color:#0d0d0d;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px;-webkit-appearance:none;appearance:none}
-.s-btn:active{opacity:.85}
-.s-note{font-size:11px;color:var(--fa);line-height:1.5;margin-top:7px;text-align:center}
-.demo-btn{background:none;border:1px solid var(--b);color:var(--mu);font-family:'DM Sans',sans-serif;font-size:13px;padding:12px 22px;border-radius:11px;cursor:pointer;width:100%;max-width:420px;-webkit-appearance:none}
-.demo-btn:active{background:var(--s)}
+#setup{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;gap:12px}
+.logo{font-size:36px;font-weight:900;letter-spacing:2px;color:var(--ac);text-align:center}
+.logo-sub{font-size:11px;letter-spacing:2px;color:var(--mu);text-transform:uppercase;margin-top:-4px;margin-bottom:8px}
+.card{background:var(--s);border:1px solid var(--b);border-radius:18px;padding:22px 18px;width:100%;max-width:400px}
+.card h2{font-size:16px;font-weight:700;color:var(--ac);margin-bottom:16px;text-align:center;letter-spacing:1px;text-transform:uppercase}
+.step{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+.step-n{background:var(--ac);color:#000;font-weight:800;font-size:13px;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-t{font-size:12px;color:var(--mu);line-height:1.5}
+.step-t strong{color:var(--tx);display:block;font-size:13px;font-weight:600}
+.step-t a{color:var(--ac)}
+.step-t code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:4px;font-size:11px;color:var(--tx);word-break:break-all}
+.inp{display:block;width:100%;background:var(--bg);border:2px solid var(--b);border-radius:10px;padding:12px 14px;color:var(--tx);font-family:inherit;font-size:15px;outline:none;margin-top:14px}
+.inp:focus{border-color:var(--ac)}
+.inp::placeholder{color:var(--fa)}
+.btn-main{display:block;width:100%;padding:14px;border-radius:10px;border:none;background:var(--ac);color:#000;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px;text-align:center}
+.btn-main:active{opacity:.8}
+.btn-sec{display:block;width:100%;max-width:400px;padding:13px;border-radius:10px;border:1px solid var(--b);background:none;color:var(--mu);font-family:inherit;font-size:14px;cursor:pointer;text-align:center}
+.btn-sec:active{background:var(--s)}
+.note{font-size:11px;color:var(--fa);text-align:center;margin-top:6px;line-height:1.5}
 
 /* APP */
-#app{display:none;flex-direction:column;min-height:100dvh}
+#app{display:none;flex-direction:column;height:100vh}
 #app.on{display:flex}
+.hdr{padding:calc(14px + var(--st)) 16px 0;background:var(--bg);border-bottom:1px solid var(--b);flex-shrink:0}
+.hdr-row{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:12px}
+.hdr-logo{font-size:22px;font-weight:900;letter-spacing:2px;color:var(--ac)}
+.hdr-sub{font-size:9px;letter-spacing:1.5px;color:var(--mu);text-transform:uppercase;margin-bottom:2px}
+.sync-pill{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:99px;border:1px solid var(--b);background:var(--s);color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap}
+.sync-pill.ok{border-color:rgba(74,222,128,.4);color:var(--gn)}
+.sync-pill.err{border-color:rgba(248,113,113,.4);color:var(--rd)}
+.sync-pill.busy{animation:pulse 1s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.sdot{width:6px;height:6px;border-radius:50%;background:currentColor}
 
-/* HEADER */
-.hdr{padding:calc(14px + var(--st)) 20px 0;position:sticky;top:0;z-index:50;background:var(--bg)}
-.hdr-in{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid var(--b)}
-.logo-sub{font-size:10px;letter-spacing:2px;color:var(--mu);font-weight:500;text-transform:uppercase}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:3px;color:var(--ac);line-height:1}
-.spill{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:99px;border:1px solid var(--b);background:var(--s);color:var(--mu);font-size:11px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;white-space:nowrap;-webkit-appearance:none;border:1px solid var(--b)}
-.spill.ok{border-color:rgba(74,222,128,.3);color:var(--gn)}
-.spill.err{border-color:rgba(248,113,113,.3);color:var(--rd)}
-.spill.busy{animation:blink 1s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.sdot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
-
-/* MAIN */
-.main{flex:1;padding:16px 20px 24px;overflow-y:auto}
+.main{flex:1;overflow-y:auto;padding:14px 16px;padding-bottom:calc(16px + var(--sb))}
 
 /* BOTTOM NAV */
-.bnav{position:sticky;bottom:0;background:rgba(12,12,12,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--b);display:flex;padding-bottom:var(--sb)}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 0;gap:3px;cursor:pointer;border:none;background:none;color:var(--fa);font-family:'DM Sans',sans-serif;-webkit-appearance:none}
+.bnav{flex-shrink:0;display:flex;background:rgba(10,10,10,.97);border-top:1px solid var(--b);padding-bottom:var(--sb)}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;padding:9px 0 7px;gap:2px;border:none;background:none;color:var(--fa);cursor:pointer;font-family:inherit}
 .ni.on{color:var(--ac)}
-.nico{font-size:21px;line-height:1}
-.nlbl{font-size:10px;letter-spacing:.5px;font-weight:600;text-transform:uppercase}
+.ni-ico{font-size:20px;line-height:1}
+.ni-lbl{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 
 /* STATS */
-.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.sc{background:var(--s);border:1px solid var(--b);border-radius:15px;padding:15px 13px}
-.sc.w{grid-column:span 2}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.grid.three{grid-template-columns:1fr 1fr 1fr}
+.sc{background:var(--s);border:1px solid var(--b);border-radius:14px;padding:14px 12px}
+.sc.wide{grid-column:span 2}
 .sc.hi{background:var(--ac);border-color:var(--ac)}
-.sl{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mu);font-weight:600;margin-bottom:6px}
-.sc.hi .sl{color:rgba(0,0,0,.45)}
-.sv{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;line-height:1}
-.sc.hi .sv{color:#0d0d0d}
-.ss{font-size:11px;color:var(--fa);margin-top:3px}
-.sc.hi .ss{color:rgba(0,0,0,.38)}
+.sc-label{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mu);font-weight:700;margin-bottom:5px}
+.sc.hi .sc-label{color:rgba(0,0,0,.5)}
+.sc-val{font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.5px}
+.sc.hi .sc-val{color:#000}
+.sc-sub{font-size:10px;color:var(--fa);margin-top:3px}
+.sc.hi .sc-sub{color:rgba(0,0,0,.4)}
 .gn{color:var(--gn)}.rd{color:var(--rd)}
 
-/* BALANCE BAR */
-.bbar{background:var(--s);border:1px solid var(--b);border-radius:15px;padding:14px;margin-bottom:14px}
-.brow{display:flex;justify-content:space-between;font-size:11px;color:var(--mu);font-weight:500;margin-bottom:8px}
+/* BAR */
+.bbar{background:var(--s);border:1px solid var(--b);border-radius:14px;padding:13px;margin-bottom:12px}
+.bbar-row{display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:8px}
 .btrack{height:5px;background:var(--fa);border-radius:99px;overflow:hidden;position:relative}
-.bgn{position:absolute;left:0;top:0;height:100%;background:var(--gn);border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1)}
-.brd{position:absolute;top:0;height:100%;background:var(--rd);border-radius:99px;transition:all .6s cubic-bezier(.4,0,.2,1)}
+.bgn{position:absolute;left:0;top:0;height:100%;background:var(--gn);transition:width .5s ease}
+.brd{position:absolute;top:0;height:100%;background:var(--rd);transition:all .5s ease}
 
 /* SECTION */
-.shr{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
-.stitle{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--ac)}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sec-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ac)}
 
 /* CARDS */
-.clist{display:flex;flex-direction:column;gap:8px}
-.crd{background:var(--s);border:1px solid var(--b);border-radius:13px;padding:12px 14px;display:flex;align-items:center;gap:10px;animation:si .2s ease}
-@keyframes si{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.cico{font-size:23px;flex-shrink:0}
-.cbody{flex:1;min-width:0}
-.ctitle{font-weight:600;font-size:14px;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cmeta{font-size:11px;color:var(--mu);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cnote{font-size:11px;color:var(--fa);font-style:italic;margin-top:1px}
-.camt{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;flex-shrink:0}
-.delbtn{background:none;border:none;cursor:pointer;color:var(--fa);font-size:20px;padding:4px 6px;border-radius:7px;flex-shrink:0;line-height:1}
-.delbtn:active{color:var(--rd)}
+.clist{display:flex;flex-direction:column;gap:7px}
+.crd{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:11px 13px;display:flex;align-items:center;gap:10px}
+.c-ico{font-size:22px;flex-shrink:0}
+.c-body{flex:1;min-width:0}
+.c-title{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-meta{font-size:11px;color:var(--mu);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-note{font-size:11px;color:var(--fa);font-style:italic;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c-amt{font-size:18px;font-weight:800;flex-shrink:0;letter-spacing:-0.5px}
+.del{background:none;border:none;color:var(--fa);font-size:20px;cursor:pointer;padding:2px 5px;flex-shrink:0;line-height:1}
+.del:active{color:var(--rd)}
 
 /* EMPTY */
-.empty{text-align:center;padding:44px 16px}
-.eico{font-size:38px;margin-bottom:9px}
-.empty p{font-size:13px;line-height:1.5;color:var(--mu)}
+.empty{text-align:center;padding:40px 16px;color:var(--mu)}
+.empty-ico{font-size:36px;margin-bottom:8px}
+.empty p{font-size:13px;line-height:1.5}
 
 /* FAB */
-.fab{position:fixed;bottom:calc(72px + var(--sb) + 14px);right:20px;width:54px;height:54px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;font-size:28px;color:#0d0d0d;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,241,53,.3);z-index:40}
-.fab:active{transform:scale(.9)}
+#fab{position:fixed;bottom:calc(58px + var(--sb) + 16px);right:16px;width:52px;height:52px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;font-size:28px;color:#000;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,241,53,.35);z-index:40}
+#fab:active{transform:scale(.9)}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:9px 17px;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;-webkit-appearance:none}
-.ba{background:var(--ac);color:#0d0d0d}
-.ba:active{opacity:.85}
-.bg2{background:var(--s2);color:var(--mu);border:1px solid var(--b)}
-.bg2:active{background:var(--b)}
-.bsm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:8px 15px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:12px}
+.btn-ac{background:var(--ac);color:#000}.btn-ac:active{opacity:.8}
+.btn-gh{background:var(--s2);color:var(--mu);border:1px solid var(--b)}.btn-gh:active{background:var(--b)}
+.btn-sm{padding:6px 11px;font-size:11px;border-radius:7px}
 
 /* MODAL */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:200;display:flex;align-items:flex-end;animation:fi .2s ease}
-@keyframes fi{from{opacity:0}to{opacity:1}}
-.modal{background:var(--s);border:1px solid var(--b);border-radius:22px 22px 0 0;padding:20px 18px;padding-bottom:calc(20px + var(--sb));width:100%;max-height:92dvh;overflow-y:auto;animation:su .26s cubic-bezier(.4,0,.2,1)}
-@keyframes su{from{transform:translateY(36px);opacity:0}to{transform:none;opacity:1}}
-.mhandle{width:36px;height:4px;background:var(--b);border-radius:99px;margin:0 auto 16px}
-.mtitle{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--ac);margin-bottom:15px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fg{margin-bottom:12px}
-label{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mu);font-weight:600;margin-bottom:5px}
-input,select{width:100%;background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:11px 12px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
-input:focus,select:focus{border-color:var(--ac)}
-input::placeholder{color:var(--fa)}
-.mactions{display:flex;gap:8px;margin-top:15px}
-.mactions .btn{flex:1;padding:12px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:200;display:flex;align-items:flex-end}
+.modal{background:var(--s);border-radius:20px 20px 0 0;padding:18px 16px;padding-bottom:calc(18px + var(--sb));width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--b);border-bottom:none}
+.m-handle{width:34px;height:4px;background:var(--b);border-radius:99px;margin:0 auto 14px}
+.m-title{font-size:18px;font-weight:800;color:var(--ac);letter-spacing:1px;margin-bottom:14px;text-transform:uppercase}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.fg{margin-bottom:11px}
+.fg label{display:block;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu);font-weight:700;margin-bottom:5px}
+.fg input,.fg select{display:block;width:100%;background:var(--bg);border:2px solid var(--b);border-radius:9px;padding:10px 12px;color:var(--tx);font-family:inherit;font-size:16px;outline:none;-webkit-appearance:none;appearance:none}
+.fg input:focus,.fg select:focus{border-color:var(--ac)}
+.fg input::placeholder{color:var(--fa)}
+.m-actions{display:flex;gap:8px;margin-top:14px}
+.m-actions .btn{flex:1;padding:13px}
 
 /* TOOLS */
-.tcrd{background:var(--s);border:1px solid var(--b);border-radius:15px;padding:16px 14px;margin-bottom:12px}
-.ttitle{font-size:11px;font-weight:700;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-.tbtns{display:flex;gap:8px;flex-wrap:wrap}
-.tnote{font-size:11px;color:var(--fa);line-height:1.5;margin-top:8px}
-
-/* BANNER */
-.banner{background:var(--adim);border:1px solid rgba(200,241,53,.18);border-radius:13px;padding:13px 14px;margin-bottom:14px;font-size:12px;color:var(--mu);line-height:1.6}
-.banner strong{color:var(--ac);display:block;margin-bottom:3px;font-size:13px}
+.tcrd{background:var(--s);border:1px solid var(--b);border-radius:14px;padding:15px 13px;margin-bottom:11px}
+.t-title{font-size:10px;font-weight:700;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.t-btns{display:flex;gap:8px;flex-wrap:wrap}
+.t-note{font-size:11px;color:var(--fa);line-height:1.5;margin-top:8px}
+.banner{background:rgba(200,241,53,.08);border:1px solid rgba(200,241,53,.2);border-radius:12px;padding:12px 13px;margin-bottom:12px;font-size:12px;color:var(--mu);line-height:1.6}
+.banner strong{color:var(--ac);display:block;font-size:13px;margin-bottom:2px}
 
 /* TOAST */
-.toast{position:fixed;top:calc(16px + var(--st));left:50%;transform:translateX(-50%);background:var(--ac);color:#0d0d0d;padding:8px 20px;border-radius:99px;font-weight:700;font-size:13px;z-index:400;animation:ti .22s ease,to .28s ease 1.9s forwards;white-space:nowrap;pointer-events:none}
-@keyframes ti{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-@keyframes to{to{opacity:0;transform:translateX(-50%) translateY(-8px)}}
+.toast{position:fixed;top:calc(14px + var(--st));left:50%;transform:translateX(-50%);background:var(--ac);color:#000;padding:8px 18px;border-radius:99px;font-weight:700;font-size:13px;z-index:500;pointer-events:none;white-space:nowrap;animation:tin .2s ease,tout .25s ease 1.9s forwards}
+@keyframes tin{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes tout{to{opacity:0;transform:translateX(-50%) translateY(-8px)}}
 .toast.e{background:var(--rd);color:#fff}
-
-/* LOADING */
-.loading{text-align:center;padding:20px;color:var(--mu);font-size:13px}
 </style>
 </head>
 <body>
 
 <!-- SETUP -->
 <div id="setup">
-  <div class="s-logo">🏸 Cordage Pro</div>
-  <div class="s-sub">Synchronisation Google Sheets</div>
+  <div class="logo">🏸 CORDAGE PRO</div>
+  <div class="logo-sub">Synchronisation Google Sheets</div>
 
-  <div class="s-card">
+  <div class="card">
     <h2>Connexion Google (1 fois)</h2>
-    <div class="step">
-      <div class="snum">1</div>
-      <div class="stxt">
-        <strong>Google Cloud Console</strong>
-        <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a> → nouveau projet
-      </div>
-    </div>
-    <div class="step">
-      <div class="snum">2</div>
-      <div class="stxt">
-        <strong>Activez les APIs</strong>
-        APIs &amp; Services → Bibliothèque → activez <strong>Google Sheets API</strong> + <strong>Google Drive API</strong>
-      </div>
-    </div>
-    <div class="step">
-      <div class="snum">3</div>
-      <div class="stxt">
-        <strong>Créez un Client ID OAuth 2.0</strong>
-        Identifiants → Créer → ID client OAuth → <strong>Application Web</strong><br>
-        Origines JS autorisées : <code>https://daminoreseau.github.io</code> et/ou <code>https://dlemarchand.fr</code>
-      </div>
-    </div>
-    <div class="step">
-      <div class="snum">4</div>
-      <div class="stxt"><strong>Collez votre Client ID ci-dessous</strong></div>
-    </div>
-    <input class="s-inp" id="cid" type="text" placeholder="123456789-abc….apps.googleusercontent.com" autocomplete="off" spellcheck="false">
-    <button class="s-btn" id="gobtn" onclick="startGoogle()">Se connecter avec Google →</button>
-    <p class="s-note">Données stockées dans votre Google Drive uniquement.</p>
+    <div class="step"><div class="step-n">1</div><div class="step-t"><strong>Google Cloud Console</strong>Allez sur <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a> → nouveau projet</div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-t"><strong>Activez les APIs</strong>APIs &amp; Services → Bibliothèque → activez <strong>Google Sheets API</strong> et <strong>Google Drive API</strong></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-t"><strong>Créez un Client ID OAuth 2.0</strong>Identifiants → Créer → ID client OAuth → Application Web<br>Origines JS autorisées : <code>https://daminoreseau.github.io</code></div></div>
+    <div class="step"><div class="step-n">4</div><div class="step-t"><strong>Collez votre Client ID ci-dessous</strong></div></div>
+    <input class="inp" id="cid" type="text" placeholder="123456789-abc….apps.googleusercontent.com" autocomplete="off" spellcheck="false">
+    <button class="btn-main" id="gobtn" onclick="startGoogle()">Se connecter avec Google →</button>
+    <p class="note">Données stockées uniquement dans votre Google Drive.</p>
   </div>
 
-  <button class="demo-btn" onclick="startDemo()">🧪 Mode démo (données locales)</button>
+  <button class="btn-sec" onclick="startDemo()">🧪 Mode démo (sans sync)</button>
 </div>
 
 <!-- APP -->
 <div id="app">
   <div class="hdr">
-    <div class="hdr-in">
+    <div class="hdr-row">
       <div>
-        <div class="logo-sub">Suivi activité</div>
-        <div class="logo">Cordage Pro</div>
+        <div class="hdr-sub">Suivi activité</div>
+        <div class="hdr-logo">Cordage Pro</div>
       </div>
-      <button class="spill" id="spill" onclick="manualSync()">
+      <button class="sync-pill" id="spill" onclick="manualSync()">
         <span class="sdot" id="sdot"></span>
         <span id="slbl">—</span>
       </button>
     </div>
   </div>
+
   <div class="main" id="main"></div>
+
   <nav class="bnav">
-    <button class="ni on" data-tab="dash" onclick="setTab('dash')"><span class="nico">📊</span><span class="nlbl">Accueil</span></button>
-    <button class="ni" data-tab="raq" onclick="setTab('raq')"><span class="nico">🏸</span><span class="nlbl">Raquettes</span></button>
-    <button class="ni" data-tab="dep" onclick="setTab('dep')"><span class="nico">🛠️</span><span class="nlbl">Dépenses</span></button>
-    <button class="ni" data-tab="out" onclick="setTab('out')"><span class="nico">⚙️</span><span class="nlbl">Outils</span></button>
+    <button class="ni on" data-tab="dash" onclick="setTab('dash')"><span class="ni-ico">📊</span><span class="ni-lbl">Accueil</span></button>
+    <button class="ni" data-tab="raq" onclick="setTab('raq')"><span class="ni-ico">🏸</span><span class="ni-lbl">Raquettes</span></button>
+    <button class="ni" data-tab="dep" onclick="setTab('dep')"><span class="ni-ico">🛠️</span><span class="ni-lbl">Dépenses</span></button>
+    <button class="ni" data-tab="out" onclick="setTab('out')"><span class="ni-ico">⚙️</span><span class="ni-lbl">Outils</span></button>
   </nav>
 </div>
 
 <!-- MODAL RAQUETTE -->
-<div id="mr" class="ov" style="display:none" onclick="mayClose(event,'mr')">
+<div id="mr" class="ov" style="display:none" onclick="if(event.target===this)closeM('mr')">
   <div class="modal">
-    <div class="mhandle"></div>
-    <div class="mtitle">🏸 Nouvelle raquette</div>
+    <div class="m-handle"></div>
+    <div class="m-title">🏸 Nouvelle raquette</div>
     <div class="frow">
-      <div class="fg"><label>Date</label><input type="date" id="rr-date"></div>
-      <div class="fg"><label>Prix (€)</label><input type="number" id="rr-prix" placeholder="15" inputmode="decimal"></div>
+      <div class="fg"><label>Date</label><input type="date" id="rr-d"></div>
+      <div class="fg"><label>Prix €</label><input type="number" id="rr-p" placeholder="15" inputmode="decimal"></div>
     </div>
-    <div class="fg"><label>Client</label><input type="text" id="rr-client" placeholder="Nom du client" autocomplete="off"></div>
-    <div class="fg"><label>Modèle de raquette</label><input type="text" id="rr-model" placeholder="Yonex Astrox 88D…" autocomplete="off"></div>
+    <div class="fg"><label>Client</label><input type="text" id="rr-c" placeholder="Nom du client" autocomplete="off"></div>
+    <div class="fg"><label>Modèle</label><input type="text" id="rr-m" placeholder="Yonex Astrox 88D…" autocomplete="off"></div>
     <div class="frow">
-      <div class="fg"><label>Cordage</label><input type="text" id="rr-cord" placeholder="BG65, Nanogy…" autocomplete="off"></div>
-      <div class="fg"><label>Tension (lbs)</label><input type="number" id="rr-tens" placeholder="26" inputmode="decimal"></div>
+      <div class="fg"><label>Cordage</label><input type="text" id="rr-co" placeholder="BG65…" autocomplete="off"></div>
+      <div class="fg"><label>Tension lbs</label><input type="number" id="rr-t" placeholder="26" inputmode="decimal"></div>
     </div>
-    <div class="fg"><label>Notes</label><input type="text" id="rr-notes" placeholder="Optionnel…" autocomplete="off"></div>
-    <div class="mactions">
-      <button class="btn bg2" onclick="closeM('mr')">Annuler</button>
-      <button class="btn ba" onclick="saveR()">Enregistrer</button>
+    <div class="fg"><label>Notes</label><input type="text" id="rr-n" placeholder="Optionnel…" autocomplete="off"></div>
+    <div class="m-actions">
+      <button class="btn btn-gh" onclick="closeM('mr')">Annuler</button>
+      <button class="btn btn-ac" onclick="saveR()">Enregistrer</button>
     </div>
   </div>
 </div>
 
 <!-- MODAL DEPENSE -->
-<div id="md" class="ov" style="display:none" onclick="mayClose(event,'md')">
+<div id="md" class="ov" style="display:none" onclick="if(event.target===this)closeM('md')">
   <div class="modal">
-    <div class="mhandle"></div>
-    <div class="mtitle">🛠️ Nouvelle dépense</div>
+    <div class="m-handle"></div>
+    <div class="m-title">🛠️ Nouvelle dépense</div>
     <div class="frow">
-      <div class="fg"><label>Date</label><input type="date" id="dd-date"></div>
-      <div class="fg"><label>Montant (€)</label><input type="number" id="dd-mont" placeholder="250" inputmode="decimal"></div>
+      <div class="fg"><label>Date</label><input type="date" id="dd-d"></div>
+      <div class="fg"><label>Montant €</label><input type="number" id="dd-m" placeholder="250" inputmode="decimal"></div>
     </div>
-    <div class="fg"><label>Description</label><input type="text" id="dd-desc" placeholder="Machine, bobine BG65…" autocomplete="off"></div>
+    <div class="fg"><label>Description</label><input type="text" id="dd-c" placeholder="Machine, bobine…" autocomplete="off"></div>
     <div class="fg"><label>Catégorie</label>
       <select id="dd-cat">
         <option>Machine à corder</option>
@@ -265,351 +230,326 @@ input::placeholder{color:var(--fa)}
         <option>Autre</option>
       </select>
     </div>
-    <div class="mactions">
-      <button class="btn bg2" onclick="closeM('md')">Annuler</button>
-      <button class="btn ba" onclick="saveD()">Enregistrer</button>
+    <div class="m-actions">
+      <button class="btn btn-gh" onclick="closeM('md')">Annuler</button>
+      <button class="btn btn-ac" onclick="saveD()">Enregistrer</button>
     </div>
   </div>
 </div>
 
 <script>
-// ══ CONFIG ══
-const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file';
-const LOCAL  = 'cordage-pro-v4';
+// ── STATE ──
+var db = {raquettes:[], depenses:[]};
+var token = null, sheetId = null, clientId = null;
+var demo = false, tab = 'dash';
+var tokenClient = null, gsiReady = false;
+var LOCAL = 'cpro-v5';
 
-// ══ STATE ══
-let db = { raquettes:[], depenses:[] };
-let token = null, sheetId = null, clientId = null;
-let demo = false, tab = 'dash';
-let tokenClient = null;
-let gsiLoaded = false;
-
-// ══ LOCAL STORAGE ══
-function loadLocal() {
-  try { const r = localStorage.getItem(LOCAL); if (r) return JSON.parse(r); } catch(e){}
-  return { raquettes:[], depenses:[], sheetId:null, clientId:null };
+// ── STORAGE ──
+function lload() {
+  try { var r = localStorage.getItem(LOCAL); return r ? JSON.parse(r) : {}; } catch(e) { return {}; }
 }
-function saveLocal() {
-  try { localStorage.setItem(LOCAL, JSON.stringify({...db, sheetId, clientId})); } catch(e){}
+function lsave() {
+  try { localStorage.setItem(LOCAL, JSON.stringify(Object.assign({}, db, {sheetId:sheetId, clientId:clientId}))); } catch(e){}
 }
 
-// ══ INIT ══
-window.addEventListener('load', () => {
-  const s = loadLocal();
-  db = { raquettes: s.raquettes||[], depenses: s.depenses||[] };
-  if (s.sheetId)  sheetId  = s.sheetId;
-  if (s.clientId) { clientId = s.clientId; document.getElementById('cid').value = clientId; }
-  // Charger GSI en async sans bloquer
-  loadGSI();
-});
+// ── INIT ──
+(function init() {
+  var saved = lload();
+  db.raquettes = saved.raquettes || [];
+  db.depenses  = saved.depenses  || [];
+  if (saved.sheetId)  sheetId  = saved.sheetId;
+  if (saved.clientId) { clientId = saved.clientId; document.getElementById('cid').value = clientId; }
+})();
 
-function loadGSI() {
-  const script = document.createElement('script');
-  script.src = 'https://accounts.google.com/gsi/client';
-  script.onload = () => { gsiLoaded = true; };
-  script.onerror = () => { gsiLoaded = false; };
-  document.head.appendChild(script);
+// Chargement GSI en background
+function loadGSI(cb) {
+  if (gsiReady) { cb(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://accounts.google.com/gsi/client';
+  s.onload  = function() { gsiReady = true; cb(); };
+  s.onerror = function() { toast('Impossible de charger Google Sign-In', true); };
+  document.head.appendChild(s);
 }
 
-// ══ DEMO ══
+// ── DEMO ──
 function startDemo() {
   demo = true;
-  document.getElementById('setup').style.display = 'none';
-  document.getElementById('app').classList.add('on');
+  showApp();
   setSS('idle', '🧪 Démo');
   render();
-  toast('Mode démo — données locales uniquement');
+  toast('Mode démo actif');
 }
 
-// ══ GOOGLE AUTH ══
-async function startGoogle() {
-  const cid = document.getElementById('cid').value.trim();
+// ── GOOGLE ──
+function startGoogle() {
+  var cid = document.getElementById('cid').value.trim();
   if (!cid) { toast('Collez votre Client ID Google', true); return; }
-  clientId = cid;
-  saveLocal();
+  clientId = cid; lsave();
+  document.getElementById('gobtn').textContent = 'Chargement…';
+  loadGSI(function() {
+    document.getElementById('gobtn').textContent = 'Se connecter avec Google →';
+    try {
+      tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: clientId,
+        scope: 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.file',
+        callback: function(resp) {
+          if (resp.error) { toast('Erreur: ' + resp.error, true); return; }
+          token = resp.access_token;
+          showApp();
+          initSheets();
+        }
+      });
+      tokenClient.requestAccessToken({prompt:''});
+    } catch(e) { toast('Erreur: ' + e.message, true); }
+  });
+}
 
-  if (!gsiLoaded) {
-    toast('Chargement Google en cours…');
-    // Attendre max 5 secondes
-    let waited = 0;
-    while (!gsiLoaded && waited < 50) {
-      await new Promise(r => setTimeout(r, 100));
-      waited++;
-    }
-    if (!gsiLoaded) { toast('Impossible de charger Google — vérifiez votre connexion', true); return; }
-  }
+function showApp() {
+  document.getElementById('setup').style.display = 'none';
+  document.getElementById('app').classList.add('on');
+  render();
+}
 
-  try {
-    tokenClient = google.accounts.oauth2.initTokenClient({
-      client_id: clientId,
-      scope: SCOPES,
-      callback: async (resp) => {
-        if (resp.error) { toast('Erreur Google: ' + resp.error, true); return; }
-        token = resp.access_token;
-        document.getElementById('setup').style.display = 'none';
-        document.getElementById('app').classList.add('on');
-        await initSheets();
-        render();
-      },
+// ── SHEETS ──
+function initSheets() {
+  setSS('busy','Connexion…');
+  var p = sheetId ? Promise.resolve(sheetId) : findOrCreate();
+  p.then(function(id) {
+    sheetId = id; lsave();
+    return pull();
+  }).then(function() {
+    setSS('ok','Synchronisé ✓');
+    render();
+  }).catch(function(e) {
+    setSS('err','Erreur');
+    toast(e.message || 'Erreur sync', true);
+  });
+}
+
+function findOrCreate() {
+  return gf('https://www.googleapis.com/drive/v3/files?q=name%3D%27CordagePro-Data%27+and+mimeType%3D%27application%2Fvnd.google-apps.spreadsheet%27+and+trashed%3Dfalse&fields=files(id)')
+  .then(function(r) {
+    if (r.files && r.files.length) return r.files[0].id;
+    return gf('https://sheets.googleapis.com/v4/spreadsheets','POST',{
+      properties:{title:'CordagePro-Data'},
+      sheets:[{properties:{title:'Raquettes',sheetId:0}},{properties:{title:'Depenses',sheetId:1}}]
+    }).then(function(c) {
+      return gf('https://sheets.googleapis.com/v4/spreadsheets/'+c.spreadsheetId+'/values:batchUpdate','POST',{
+        valueInputOption:'RAW',
+        data:[
+          {range:'Raquettes!A1:H1',values:[['ID','Date','Client','Raquette','Cordage','Tension','Prix','Notes']]},
+          {range:'Depenses!A1:E1', values:[['ID','Date','Description','Categorie','Montant']]}
+        ]
+      }).then(function() { return c.spreadsheetId; });
     });
-    tokenClient.requestAccessToken({ prompt: '' });
-  } catch(e) {
-    toast('Erreur: ' + (e.message || e), true);
-  }
-}
-
-// ══ SHEETS ══
-async function initSheets() {
-  setSS('busy', 'Connexion…');
-  try {
-    if (!sheetId) { sheetId = await findOrCreate(); saveLocal(); }
-    await pull();
-    setSS('ok', 'Synchronisé ✓');
-  } catch(e) {
-    setSS('err', 'Erreur sync');
-    toast(e.message || 'Erreur de connexion', true);
-  }
-}
-
-async function findOrCreate() {
-  const r = await gf(`https://www.googleapis.com/drive/v3/files?q=name%3D'CordagePro-Data'+and+mimeType%3D'application%2Fvnd.google-apps.spreadsheet'+and+trashed%3Dfalse&fields=files(id)`);
-  if (r.files && r.files.length > 0) return r.files[0].id;
-  const c = await gf('https://sheets.googleapis.com/v4/spreadsheets', 'POST', {
-    properties: { title: 'CordagePro-Data' },
-    sheets: [
-      { properties: { title: 'Raquettes', sheetId: 0 } },
-      { properties: { title: 'Depenses', sheetId: 1 } }
-    ]
   });
-  await gf(`https://sheets.googleapis.com/v4/spreadsheets/${c.spreadsheetId}/values:batchUpdate`, 'POST', {
-    valueInputOption: 'RAW',
-    data: [
-      { range: 'Raquettes!A1:H1', values: [['ID','Date','Client','Raquette','Cordage','Tension','Prix','Notes']] },
-      { range: 'Depenses!A1:E1',  values: [['ID','Date','Description','Categorie','Montant']] }
-    ]
+}
+
+function pull() {
+  return gf('https://sheets.googleapis.com/v4/spreadsheets/'+sheetId+'/values:batchGet?ranges=Raquettes!A2:H&ranges=Depenses!A2:E')
+  .then(function(r) {
+    var vr = (r.valueRanges||[])[0], vd = (r.valueRanges||[])[1];
+    db.raquettes = ((vr&&vr.values)||[]).map(function(x){return{id:x[0]||uid(),date:x[1]||'',client:x[2]||'',raquette:x[3]||'',cordage:x[4]||'',tension:x[5]||'',prix:+x[6]||0,notes:x[7]||''};});
+    db.depenses  = ((vd&&vd.values)||[]).map(function(x){return{id:x[0]||uid(),date:x[1]||'',desc:x[2]||'',cat:x[3]||'',montant:+x[4]||0};});
+    lsave();
   });
-  return c.spreadsheetId;
 }
 
-async function pull() {
-  const r = await gf(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values:batchGet?ranges=Raquettes!A2:H&ranges=Depenses!A2:E`);
-  const [rv, dv] = r.valueRanges || [];
-  db.raquettes = (rv?.values || []).map(r => ({ id:r[0]||uid(), date:r[1]||'', client:r[2]||'', raquette:r[3]||'', cordage:r[4]||'', tension:r[5]||'', prix:+r[6]||0, notes:r[7]||'' }));
-  db.depenses  = (dv?.values || []).map(r => ({ id:r[0]||uid(), date:r[1]||'', desc:r[2]||'', cat:r[3]||'', montant:+r[4]||0 }));
-  saveLocal();
+function push() {
+  if (demo) { lsave(); return Promise.resolve(); }
+  setSS('busy','Sync…');
+  var rr = db.raquettes.map(function(r){return[r.id,r.date,r.client,r.raquette,r.cordage,r.tension,r.prix,r.notes];});
+  var dr = db.depenses.map(function(d){return[d.id,d.date,d.desc,d.cat,d.montant];});
+  return gf('https://sheets.googleapis.com/v4/spreadsheets/'+sheetId+'/values/Raquettes!A2:H?valueInputOption=RAW','PUT',{range:'Raquettes!A2:H',majorDimension:'ROWS',values:rr.length?rr:[[]]})
+  .then(function(){return gf('https://sheets.googleapis.com/v4/spreadsheets/'+sheetId+'/values/Depenses!A2:E?valueInputOption=RAW','PUT',{range:'Depenses!A2:E',majorDimension:'ROWS',values:dr.length?dr:[[]]});})
+  .then(function(){lsave();setSS('ok','Synchronisé ✓');})
+  .catch(function(){setSS('err','Erreur sync');toast('Sync échouée',true);});
 }
 
-async function push() {
-  if (demo) { saveLocal(); return; }
-  setSS('busy', 'Sync…');
-  try {
-    const rr = db.raquettes.map(r => [r.id, r.date, r.client, r.raquette, r.cordage, r.tension, r.prix, r.notes]);
-    const dr = db.depenses.map(d => [d.id, d.date, d.desc, d.cat, d.montant]);
-    await gf(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Raquettes!A2:H?valueInputOption=RAW`, 'PUT', { range:'Raquettes!A2:H', majorDimension:'ROWS', values: rr.length ? rr : [[]] });
-    await gf(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Depenses!A2:E?valueInputOption=RAW`,  'PUT', { range:'Depenses!A2:E',  majorDimension:'ROWS', values: dr.length ? dr : [[]] });
-    saveLocal();
-    setSS('ok', 'Synchronisé ✓');
-  } catch(e) {
-    setSS('err', 'Erreur sync');
-    toast('Sync échouée', true);
-  }
-}
-
-async function manualSync() {
+function manualSync() {
   if (demo) { toast('Mode démo : pas de sync'); return; }
-  if (!token) { tokenClient?.requestAccessToken({ prompt:'' }); return; }
-  setSS('busy', 'Sync…');
-  try { await pull(); setSS('ok', 'Synchronisé ✓'); render(); toast('✅ Données à jour'); }
-  catch(e) { setSS('err', 'Erreur'); toast('Erreur de sync', true); }
+  if (!token) { if(tokenClient) tokenClient.requestAccessToken({prompt:''}); return; }
+  setSS('busy','Sync…');
+  pull().then(function(){setSS('ok','Synchronisé ✓');render();toast('✅ À jour');}).catch(function(){setSS('err','Erreur');toast('Erreur de sync',true);});
 }
 
-async function gf(url, method='GET', body=null) {
-  const opts = { method, headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' } };
+function gf(url, method, body) {
+  method = method || 'GET';
+  var opts = {method:method, headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'}};
   if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(url, opts);
-  if (res.status === 401) { tokenClient?.requestAccessToken({ prompt:'' }); throw new Error('Session expirée'); }
-  if (!res.ok) { const e = await res.json().catch(()=>{}); throw new Error(e?.error?.message || res.statusText); }
-  return res.json();
+  return fetch(url, opts).then(function(r) {
+    if (!r.ok) return r.json().then(function(e){throw new Error((e.error&&e.error.message)||r.statusText);});
+    return r.json();
+  });
 }
 
-// ══ SYNC STATUS ══
+// ── SYNC STATUS ──
 function setSS(st, lbl) {
-  const p = document.getElementById('spill'); if (!p) return;
-  p.className = 'spill' + (st==='ok' ? ' ok' : st==='err' ? ' err' : st==='busy' ? ' busy' : '');
+  var p = document.getElementById('spill'); if (!p) return;
+  p.className = 'sync-pill' + (st==='ok'?' ok':st==='err'?' err':st==='busy'?' busy':'');
   document.getElementById('slbl').textContent = lbl;
 }
 
-// ══ UTILS ══
-function money(v) { return Number(v||0).toLocaleString('fr-FR', {style:'currency', currency:'EUR'}); }
-function fdate(s) { if (!s) return ''; return new Date(s+'T00:00:00').toLocaleDateString('fr-FR', {day:'2-digit', month:'short', year:'numeric'}); }
-function today() { return new Date().toISOString().split('T')[0]; }
-function uid()   { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
-function esc(s)  { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function cico(c) { return {'Machine à corder':'⚙️','Cordage / bobine':'🧵','Outil / accessoire':'🔧'}[c]||'📦'; }
-function toast(msg, err=false) {
-  const t = document.createElement('div');
-  t.className = 'toast' + (err?' e':''); t.textContent = msg;
+// ── UTILS ──
+function money(v){return(+v||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});}
+function fdate(s){if(!s)return'';try{return new Date(s+'T00:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}}
+function today(){return new Date().toISOString().split('T')[0];}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function cico(c){return{'Machine à corder':'⚙️','Cordage / bobine':'🧵','Outil / accessoire':'🔧'}[c]||'📦';}
+function toast(msg,err){
+  var t=document.createElement('div');
+  t.className='toast'+(err?' e':'');t.textContent=msg;
   document.body.appendChild(t);
-  setTimeout(() => t.remove(), 2400);
+  setTimeout(function(){t.remove();},2400);
 }
-function stats() {
-  const g = db.raquettes.reduce((s,r)=>s+(+r.prix||0), 0);
-  const d = db.depenses.reduce((s,x)=>s+(+x.montant||0), 0);
-  const now = new Date();
-  const mr = db.raquettes.filter(r => { const x=new Date(r.date+'T00:00:00'); return x.getMonth()===now.getMonth()&&x.getFullYear()===now.getFullYear(); });
-  return { g, d, ben:g-d, tot:db.raquettes.length, mc:mr.length, mg:mr.reduce((s,r)=>s+(+r.prix||0),0) };
+function stats(){
+  var g=db.raquettes.reduce(function(s,r){return s+(+r.prix||0);},0);
+  var d=db.depenses.reduce(function(s,x){return s+(+x.montant||0);},0);
+  var now=new Date();
+  var mr=db.raquettes.filter(function(r){var x=new Date(r.date+'T00:00:00');return x.getMonth()===now.getMonth()&&x.getFullYear()===now.getFullYear();});
+  return{g:g,d:d,ben:g-d,tot:db.raquettes.length,mc:mr.length,mg:mr.reduce(function(s,r){return s+(+r.prix||0);},0)};
 }
 
-// ══ MODALS ══
-function openM(id) {
-  document.getElementById(id).style.display = 'flex';
-  if (id==='mr') document.getElementById('rr-date').value = today();
-  if (id==='md') document.getElementById('dd-date').value = today();
+// ── MODALS ──
+function openM(id){
+  document.getElementById(id).style.display='flex';
+  if(id==='mr') document.getElementById('rr-d').value=today();
+  if(id==='md') document.getElementById('dd-d').value=today();
 }
-function closeM(id) { document.getElementById(id).style.display = 'none'; }
-function mayClose(e, id) { if (e.target === e.currentTarget) closeM(id); }
-document.addEventListener('keydown', e => { if (e.key==='Escape') { closeM('mr'); closeM('md'); } });
+function closeM(id){document.getElementById(id).style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeM('mr');closeM('md');}});
 
-// ══ SAVE ══
-async function saveR() {
-  const cl = document.getElementById('rr-client').value.trim();
-  const px = document.getElementById('rr-prix').value;
-  if (!cl || !px) { toast('Client et prix requis', true); return; }
-  db.raquettes.unshift({ id:uid(), date:document.getElementById('rr-date').value||today(), client:cl,
-    raquette:document.getElementById('rr-model').value.trim(), cordage:document.getElementById('rr-cord').value.trim(),
-    tension:document.getElementById('rr-tens').value, prix:+px, notes:document.getElementById('rr-notes').value.trim() });
+// ── SAVE ──
+function saveR(){
+  var cl=document.getElementById('rr-c').value.trim();
+  var px=document.getElementById('rr-p').value;
+  if(!cl||!px){toast('Client et prix requis',true);return;}
+  db.raquettes.unshift({id:uid(),date:document.getElementById('rr-d').value||today(),client:cl,
+    raquette:document.getElementById('rr-m').value.trim(),cordage:document.getElementById('rr-co').value.trim(),
+    tension:document.getElementById('rr-t').value,prix:+px,notes:document.getElementById('rr-n').value.trim()});
   closeM('mr');
-  ['rr-client','rr-model','rr-cord','rr-tens','rr-prix','rr-notes'].forEach(i => document.getElementById(i).value='');
-  render(); toast('🏸 Raquette ajoutée !');
-  await push();
+  ['rr-c','rr-m','rr-co','rr-t','rr-p','rr-n'].forEach(function(i){document.getElementById(i).value='';});
+  render();toast('🏸 Raquette ajoutée !');
+  push();
 }
-
-async function saveD() {
-  const dc = document.getElementById('dd-desc').value.trim();
-  const mt = document.getElementById('dd-mont').value;
-  if (!dc || !mt) { toast('Description et montant requis', true); return; }
-  db.depenses.unshift({ id:uid(), date:document.getElementById('dd-date').value||today(),
-    desc:dc, cat:document.getElementById('dd-cat').value, montant:+mt });
+function saveD(){
+  var dc=document.getElementById('dd-c').value.trim();
+  var mt=document.getElementById('dd-m').value;
+  if(!dc||!mt){toast('Description et montant requis',true);return;}
+  db.depenses.unshift({id:uid(),date:document.getElementById('dd-d').value||today(),
+    desc:dc,cat:document.getElementById('dd-cat').value,montant:+mt});
   closeM('md');
-  ['dd-desc','dd-mont'].forEach(i => document.getElementById(i).value='');
-  render(); toast('🛠️ Dépense ajoutée !');
-  await push();
+  document.getElementById('dd-c').value='';document.getElementById('dd-m').value='';
+  render();toast('🛠️ Dépense ajoutée !');
+  push();
+}
+function delR(id){
+  if(!confirm('Supprimer ?'))return;
+  db.raquettes=db.raquettes.filter(function(r){return r.id!==id;});
+  render();toast('Supprimée');push();
+}
+function delD(id){
+  if(!confirm('Supprimer ?'))return;
+  db.depenses=db.depenses.filter(function(d){return d.id!==id;});
+  render();toast('Supprimée');push();
 }
 
-async function delR(id) {
-  if (!confirm('Supprimer cette raquette ?')) return;
-  db.raquettes = db.raquettes.filter(r => r.id !== id);
-  render(); toast('Supprimée'); await push();
-}
-async function delD(id) {
-  if (!confirm('Supprimer cette dépense ?')) return;
-  db.depenses = db.depenses.filter(d => d.id !== id);
-  render(); toast('Supprimée'); await push();
-}
-
-// ══ TAB ══
-function setTab(t) {
-  tab = t;
-  document.querySelectorAll('.ni').forEach(el => el.classList.toggle('on', el.dataset.tab===t));
-  document.getElementById('main').scrollTop = 0;
-  let f = document.getElementById('fab'); if (f) f.remove();
-  if (t==='raq' || t==='dep') {
-    const fb = document.createElement('button');
-    fb.className='fab'; fb.id='fab'; fb.textContent='+';
-    fb.onclick = () => openM(t==='raq' ? 'mr' : 'md');
+// ── TAB ──
+function setTab(t){
+  tab=t;
+  document.querySelectorAll('.ni').forEach(function(el){el.classList.toggle('on',el.dataset.tab===t);});
+  document.getElementById('main').scrollTop=0;
+  var f=document.getElementById('fab');if(f)f.remove();
+  if(t==='raq'||t==='dep'){
+    var fb=document.createElement('button');fb.id='fab';fb.textContent='+';
+    fb.onclick=function(){openM(t==='raq'?'mr':'md');};
     document.body.appendChild(fb);
   }
   render();
 }
 
-// ══ RENDER ══
-function render() {
-  const s = stats(), el = document.getElementById('main');
-  if      (tab==='dash') renderDash(el, s);
-  else if (tab==='raq')  renderRaq(el, s);
-  else if (tab==='dep')  renderDep(el, s);
-  else                   renderOut(el, s);
+// ── RENDER ──
+function render(){
+  var s=stats(),el=document.getElementById('main');
+  if(!el)return;
+  if(tab==='dash')renderDash(el,s);
+  else if(tab==='raq')renderRaq(el,s);
+  else if(tab==='dep')renderDep(el,s);
+  else renderOut(el,s);
 }
 
-function renderDash(el, s) {
-  const gp = (s.g+s.d)>0 ? s.g/(s.g+s.d)*100 : 0;
-  const dp = (s.g+s.d)>0 ? s.d/(s.g+s.d)*100 : 0;
-  const rec  = [...db.raquettes].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
-  const recD = [...db.depenses].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
-  el.innerHTML = `
-    <div class="sgrid">
-      <div class="sc hi w"><div class="sl">Bénéfice net</div><div class="sv">${money(s.ben)}</div><div class="ss">gains − dépenses</div></div>
-      <div class="sc"><div class="sl">Raquettes total</div><div class="sv">${s.tot}</div><div class="ss">${s.mc} ce mois</div></div>
-      <div class="sc"><div class="sl">Gains ce mois</div><div class="sv gn">${money(s.mg)}</div><div class="ss">${s.mc} cordage${s.mc>1?'s':''}</div></div>
-      <div class="sc"><div class="sl">Total gains</div><div class="sv gn">${money(s.g)}</div></div>
-      <div class="sc"><div class="sl">Dépenses</div><div class="sv rd">${money(s.d)}</div></div>
-    </div>
-    ${(s.g>0||s.d>0) ? `<div class="bbar"><div class="brow"><span style="color:var(--gn)">● Gains ${Math.round(gp)}%</span><span style="color:var(--rd)">Dépenses ${Math.round(dp)}% ●</span></div><div class="btrack"><div class="bgn" style="width:${gp}%"></div><div class="brd" style="width:${dp}%;left:${gp}%"></div></div></div>` : ''}
-    <div class="shr"><div class="stitle">Dernières raquettes</div><button class="btn bg2 bsm" onclick="setTab('raq')">Voir tout</button></div>
-    ${rec.length ? `<div class="clist">${rec.map(r=>`<div class="crd"><div class="cico">🏸</div><div class="cbody"><div class="ctitle">${esc(r.client)}</div><div class="cmeta">${fdate(r.date)}${r.cordage?' · '+esc(r.cordage):''}${r.tension?' · '+r.tension+' lbs':''}</div></div><div class="camt gn">+${money(r.prix)}</div></div>`).join('')}</div>` : `<div class="empty"><div class="eico">🏸</div><p>Aucune raquette encore.</p></div>`}
-    <div style="height:14px"></div>
-    <div class="shr"><div class="stitle">Dernières dépenses</div><button class="btn bg2 bsm" onclick="setTab('dep')">Voir tout</button></div>
-    ${recD.length ? `<div class="clist">${recD.map(d=>`<div class="crd"><div class="cico">${cico(d.cat)}</div><div class="cbody"><div class="ctitle">${esc(d.desc)}</div><div class="cmeta">${fdate(d.date)}${d.cat?' · '+d.cat:''}</div></div><div class="camt rd">−${money(d.montant)}</div></div>`).join('')}</div>` : `<div class="empty"><div class="eico">🛠️</div><p>Aucune dépense.</p></div>`}
-  `;
+function renderDash(el,s){
+  var gp=(s.g+s.d)>0?s.g/(s.g+s.d)*100:0;
+  var dp=(s.g+s.d)>0?s.d/(s.g+s.d)*100:0;
+  var rec=[].concat(db.raquettes).sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,4);
+  var recD=[].concat(db.depenses).sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,3);
+  el.innerHTML=
+    '<div class="grid">'+
+      '<div class="sc hi wide"><div class="sc-label">Bénéfice net</div><div class="sc-val">'+money(s.ben)+'</div><div class="sc-sub">gains − dépenses</div></div>'+
+      '<div class="sc"><div class="sc-label">Raquettes</div><div class="sc-val">'+s.tot+'</div><div class="sc-sub">'+s.mc+' ce mois</div></div>'+
+      '<div class="sc"><div class="sc-label">Gains mois</div><div class="sc-val gn">'+money(s.mg)+'</div></div>'+
+      '<div class="sc"><div class="sc-label">Total gains</div><div class="sc-val gn">'+money(s.g)+'</div></div>'+
+      '<div class="sc"><div class="sc-label">Dépenses</div><div class="sc-val rd">'+money(s.d)+'</div></div>'+
+    '</div>'+
+    ((s.g>0||s.d>0)?'<div class="bbar"><div class="bbar-row"><span style="color:var(--gn)">● Gains '+Math.round(gp)+'%</span><span style="color:var(--rd)">Dépenses '+Math.round(dp)+'% ●</span></div><div class="btrack"><div class="bgn" style="width:'+gp+'%"></div><div class="brd" style="width:'+dp+'%;left:'+gp+'%"></div></div></div>':'')+
+    '<div class="sec-hdr"><div class="sec-title">Dernières raquettes</div><button class="btn btn-gh btn-sm" onclick="setTab(\'raq\')">Voir tout</button></div>'+
+    (rec.length?'<div class="clist">'+rec.map(function(r){return '<div class="crd"><div class="c-ico">🏸</div><div class="c-body"><div class="c-title">'+esc(r.client)+'</div><div class="c-meta">'+fdate(r.date)+(r.cordage?' · '+esc(r.cordage):'')+(r.tension?' · '+r.tension+' lbs':'')+'</div></div><div class="c-amt gn">+'+money(r.prix)+'</div></div>';}).join('')+'</div>':'<div class="empty"><div class="empty-ico">🏸</div><p>Aucune raquette encore.</p></div>')+
+    '<div style="height:12px"></div>'+
+    '<div class="sec-hdr"><div class="sec-title">Dernières dépenses</div><button class="btn btn-gh btn-sm" onclick="setTab(\'dep\')">Voir tout</button></div>'+
+    (recD.length?'<div class="clist">'+recD.map(function(d){return '<div class="crd"><div class="c-ico">'+cico(d.cat)+'</div><div class="c-body"><div class="c-title">'+esc(d.desc)+'</div><div class="c-meta">'+fdate(d.date)+(d.cat?' · '+d.cat:'')+'</div></div><div class="c-amt rd">−'+money(d.montant)+'</div></div>';}).join('')+'</div>':'<div class="empty"><div class="empty-ico">🛠️</div><p>Aucune dépense.</p></div>');
 }
 
-function renderRaq(el, s) {
-  const sorted = [...db.raquettes].sort((a,b)=>b.date.localeCompare(a.date));
-  el.innerHTML = `
-    <div class="sgrid" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:14px">
-      <div class="sc"><div class="sl">Total</div><div class="sv">${s.tot}</div></div>
-      <div class="sc"><div class="sl">Ce mois</div><div class="sv gn">${s.mc}</div></div>
-      <div class="sc"><div class="sl">Gains</div><div class="sv gn" style="font-size:19px">${money(s.g)}</div></div>
-    </div>
-    <div class="shr"><div class="stitle">Toutes les raquettes</div><button class="btn ba bsm" onclick="openM('mr')">+ Ajouter</button></div>
-    ${sorted.length ? `<div class="clist">${sorted.map(r=>`<div class="crd"><div class="cico">🏸</div><div class="cbody"><div class="ctitle">${esc(r.client)}</div><div class="cmeta">${fdate(r.date)}${r.raquette?' · '+esc(r.raquette):''}${r.cordage?' · '+esc(r.cordage):''}${r.tension?' · '+r.tension+' lbs':''}</div>${r.notes?`<div class="cnote">${esc(r.notes)}</div>`:''}</div><div class="camt gn">+${money(r.prix)}</div><button class="delbtn" onclick="delR('${r.id}')">×</button></div>`).join('')}</div>` : `<div class="empty"><div class="eico">🏸</div><p>Appuyez sur + pour ajouter votre premier cordage !</p></div>`}
-  `;
+function renderRaq(el,s){
+  var sorted=[].concat(db.raquettes).sort(function(a,b){return b.date.localeCompare(a.date);});
+  el.innerHTML=
+    '<div class="grid three" style="margin-bottom:12px">'+
+      '<div class="sc"><div class="sc-label">Total</div><div class="sc-val">'+s.tot+'</div></div>'+
+      '<div class="sc"><div class="sc-label">Ce mois</div><div class="sc-val gn">'+s.mc+'</div></div>'+
+      '<div class="sc"><div class="sc-label">Gains</div><div class="sc-val gn" style="font-size:18px">'+money(s.g)+'</div></div>'+
+    '</div>'+
+    '<div class="sec-hdr"><div class="sec-title">Toutes les raquettes</div><button class="btn btn-ac btn-sm" onclick="openM(\'mr\')">+ Ajouter</button></div>'+
+    (sorted.length?'<div class="clist">'+sorted.map(function(r){return '<div class="crd"><div class="c-ico">🏸</div><div class="c-body"><div class="c-title">'+esc(r.client)+'</div><div class="c-meta">'+fdate(r.date)+(r.raquette?' · '+esc(r.raquette):'')+(r.cordage?' · '+esc(r.cordage):'')+(r.tension?' · '+r.tension+' lbs':'')+'</div>'+(r.notes?'<div class="c-note">'+esc(r.notes)+'</div>':'')+'</div><div class="c-amt gn">+'+money(r.prix)+'</div><button class="del" onclick="delR(\''+r.id+'\')">×</button></div>';}).join('')+'</div>':'<div class="empty"><div class="empty-ico">🏸</div><p>Appuyez sur + pour ajouter votre premier cordage !</p></div>');
 }
 
-function renderDep(el, s) {
-  const sorted = [...db.depenses].sort((a,b)=>b.date.localeCompare(a.date));
-  el.innerHTML = `
-    <div class="sgrid" style="margin-bottom:14px">
-      <div class="sc"><div class="sl">Nb dépenses</div><div class="sv">${db.depenses.length}</div></div>
-      <div class="sc"><div class="sl">Total</div><div class="sv rd" style="font-size:21px">${money(s.d)}</div></div>
-    </div>
-    <div class="shr"><div class="stitle">Toutes les dépenses</div><button class="btn ba bsm" onclick="openM('md')">+ Ajouter</button></div>
-    ${sorted.length ? `<div class="clist">${sorted.map(d=>`<div class="crd"><div class="cico">${cico(d.cat)}</div><div class="cbody"><div class="ctitle">${esc(d.desc)}</div><div class="cmeta">${fdate(d.date)}${d.cat?' · '+d.cat:''}</div></div><div class="camt rd">−${money(d.montant)}</div><button class="delbtn" onclick="delD('${d.id}')">×</button></div>`).join('')}</div>` : `<div class="empty"><div class="eico">🛠️</div><p>Aucune dépense enregistrée.</p></div>`}
-  `;
+function renderDep(el,s){
+  var sorted=[].concat(db.depenses).sort(function(a,b){return b.date.localeCompare(a.date);});
+  el.innerHTML=
+    '<div class="grid" style="margin-bottom:12px">'+
+      '<div class="sc"><div class="sc-label">Nb dépenses</div><div class="sc-val">'+db.depenses.length+'</div></div>'+
+      '<div class="sc"><div class="sc-label">Total</div><div class="sc-val rd" style="font-size:20px">'+money(s.d)+'</div></div>'+
+    '</div>'+
+    '<div class="sec-hdr"><div class="sec-title">Toutes les dépenses</div><button class="btn btn-ac btn-sm" onclick="openM(\'md\')">+ Ajouter</button></div>'+
+    (sorted.length?'<div class="clist">'+sorted.map(function(d){return '<div class="crd"><div class="c-ico">'+cico(d.cat)+'</div><div class="c-body"><div class="c-title">'+esc(d.desc)+'</div><div class="c-meta">'+fdate(d.date)+(d.cat?' · '+d.cat:'')+'</div></div><div class="c-amt rd">−'+money(d.montant)+'</div><button class="del" onclick="delD(\''+d.id+'\')">×</button></div>';}).join('')+'</div>':'<div class="empty"><div class="empty-ico">🛠️</div><p>Aucune dépense enregistrée.</p></div>');
 }
 
-function renderOut(el, s) {
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const isSA  = window.navigator.standalone;
-  el.innerHTML = `
-    ${isIOS && !isSA ? `<div class="banner"><strong>📲 Installer sur iPhone</strong>Dans Safari : <strong>⎙ Partager</strong> → <strong>"Sur l'écran d'accueil"</strong></div>` : ''}
-    ${isSA ? `<div class="banner"><strong>✅ Installée !</strong>Cordage Pro fonctionne comme une app native.</div>` : ''}
-    ${!demo ? `<div class="tcrd"><div class="ttitle">☁️ Google Sheets</div><div class="tbtns"><button class="btn ba bsm" onclick="manualSync()">🔄 Synchroniser</button><button class="btn bg2 bsm" onclick="if(sheetId)window.open('https://docs.google.com/spreadsheets/d/'+sheetId,'_blank')">📊 Ouvrir Sheets</button></div><div class="tnote">Fichier : <strong>CordagePro-Data</strong> dans votre Google Drive</div></div>` : ''}
-    <div class="tcrd"><div class="ttitle">📊 Export CSV</div><div class="tbtns"><button class="btn bg2 bsm" onclick="exportCSV('r')">🏸 Raquettes</button><button class="btn bg2 bsm" onclick="exportCSV('d')">🛠️ Dépenses</button></div></div>
-    <div class="tcrd"><div class="ttitle">📋 Résumé</div><p style="font-size:13px;color:var(--mu);line-height:2">Raquettes : <strong style="color:var(--tx)">${s.tot}</strong><br>Total encaissé : <strong style="color:var(--gn)">${money(s.g)}</strong><br>Total dépensé : <strong style="color:var(--rd)">${money(s.d)}</strong><br>Bénéfice net : <strong style="color:var(--ac)">${money(s.ben)}</strong></p></div>
-    <div class="tcrd"><div class="ttitle" style="color:var(--rd)">⚠️ Danger</div><button class="btn bsm" style="color:var(--rd);border:1px solid rgba(248,113,113,.25);background:none" onclick="resetAll()">🗑 Effacer toutes les données</button></div>
-  `;
+function renderOut(el,s){
+  var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  var isSA=!!window.navigator.standalone;
+  el.innerHTML=
+    (isIOS&&!isSA?'<div class="banner"><strong>📲 Installer sur iPhone</strong>Dans Safari : ⎙ Partager → "Sur l\'écran d\'accueil"</div>':'')+
+    (isSA?'<div class="banner"><strong>✅ Installée !</strong>Fonctionne comme une app native.</div>':'')+
+    (!demo?'<div class="tcrd"><div class="t-title">☁️ Google Sheets</div><div class="t-btns"><button class="btn btn-ac btn-sm" onclick="manualSync()">🔄 Synchroniser</button>'+(sheetId?'<button class="btn btn-gh btn-sm" onclick="window.open(\'https://docs.google.com/spreadsheets/d/'+sheetId+'\',\'_blank\')">📊 Ouvrir Sheets</button>':'')+'</div><div class="t-note">Fichier : <strong>CordagePro-Data</strong> dans votre Google Drive</div></div>':'')+
+    '<div class="tcrd"><div class="t-title">📊 Export CSV</div><div class="t-btns"><button class="btn btn-gh btn-sm" onclick="exportCSV(\'r\')">🏸 Raquettes</button><button class="btn btn-gh btn-sm" onclick="exportCSV(\'d\')">🛠️ Dépenses</button></div></div>'+
+    '<div class="tcrd"><div class="t-title">📋 Résumé</div><p style="font-size:13px;color:var(--mu);line-height:2.1">Raquettes : <strong style="color:var(--tx)">'+s.tot+'</strong><br>Total encaissé : <strong style="color:var(--gn)">'+money(s.g)+'</strong><br>Total dépensé : <strong style="color:var(--rd)">'+money(s.d)+'</strong><br>Bénéfice net : <strong style="color:var(--ac)">'+money(s.ben)+'</strong></p></div>'+
+    '<div class="tcrd"><div class="t-title" style="color:var(--rd)">⚠️ Danger</div><button class="btn btn-sm" style="color:var(--rd);border:1px solid rgba(248,113,113,.3);background:none" onclick="resetAll()">🗑 Effacer toutes les données</button></div>';
 }
 
-function exportCSV(t) {
-  let csv, fn;
-  if (t==='r') {
-    csv = [['Date','Client','Raquette','Cordage','Tension','Prix','Notes'], ...db.raquettes.map(r=>[r.date,r.client,r.raquette,r.cordage,r.tension,r.prix,r.notes])].map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-    fn = `raquettes-${today()}.csv`;
-  } else {
-    csv = [['Date','Description','Categorie','Montant'], ...db.depenses.map(d=>[d.date,d.desc,d.cat,d.montant])].map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-    fn = `depenses-${today()}.csv`;
-  }
-  const b = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8'});
-  const a = document.createElement('a'); a.href=URL.createObjectURL(b); a.download=fn; a.click();
+function exportCSV(t){
+  var rows,fn;
+  if(t==='r'){rows=[['Date','Client','Raquette','Cordage','Tension','Prix','Notes']].concat(db.raquettes.map(function(r){return[r.date,r.client,r.raquette,r.cordage,r.tension,r.prix,r.notes];}));fn='raquettes-'+today()+'.csv';}
+  else{rows=[['Date','Description','Categorie','Montant']].concat(db.depenses.map(function(d){return[d.date,d.desc,d.cat,d.montant];}));fn='depenses-'+today()+'.csv';}
+  var csv=rows.map(function(r){return r.map(function(v){return'"'+String(v||'').replace(/"/g,'""')+'"';}).join(',');}).join('\n');
+  var b=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;a.click();
   toast('CSV téléchargé');
 }
 
-async function resetAll() {
-  if (!confirm('Effacer toutes les données ?')) return;
-  if (!confirm('Confirmez — action irréversible.')) return;
-  db = { raquettes:[], depenses:[] };
-  render(); toast('Données effacées'); await push();
+function resetAll(){
+  if(!confirm('Effacer toutes les données ?'))return;
+  if(!confirm('Action irréversible. Confirmer ?'))return;
+  db={raquettes:[],depenses:[]};render();toast('Données effacées');push();
 }
 </script>
 </body>
